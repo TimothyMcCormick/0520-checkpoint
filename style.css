@@ -1,0 +1,21 @@
+body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-main-img{
+  background-image: url(./rock-concert.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+.drums-img{
+  width: 100%;
+  object-fit: cover;
+}
+
+.drums-card{
+  border: 3px solid black;
+  
+}

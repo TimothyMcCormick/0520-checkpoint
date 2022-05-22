@@ -3,6 +3,7 @@ console.log('js arrived')
 
 let chops = 0
 
+
 const drums = {
   image: "./drumset.jpg",  
 }
@@ -12,34 +13,34 @@ let clickUpgrades = {
     Name: 'Sticks',
     price: 10,
     quantity: 0,
-    multiplier: 1.5
+    multiplier: 2
   },
   axe: {
     Name: 'Axe',
     price: 20,
     quantity: 0,
-    multiplier: 4
+    multiplier: 5
   }
   
 };
 
-
-
 let guestDrummers= {
   TravisBarker: {
     Name: 'Travis Barker',
-    price: 200,
+    price: 500,
     quantity: 0,
-    multiplier: 20
+    multiplier: 50
   },
 
   NeilPeart: {
     Name: 'Neil Peart',
-    price: 600,
+    price: 1000,
     quantity: 0,
-    multiplier: 20
+    multiplier: 100
   }
 };
+
+// let newSticksPrice = clickUpgrades.sticks.price
 
 
 function drawDrums(){
@@ -56,76 +57,97 @@ function mine(){
   
   chops++
     if (clickUpgrades.sticks.quantity > 0){
-      chops += clickUpgrades.sticks.quantity * clickUpgrades.sticks.multiplier
-    } if (clickUpgrades.axe.quantity > 0){
-      chops += clickUpgrades.axe.quantity * clickUpgrades.axe.multiplier
-    } 
-      
-    
-    priceMultiplier()
+      chops += clickUpgrades.sticks.quantity * clickUpgrades.sticks.multiplier    
+    }
     updateChops()
-  }
-
-
-
-
-function updatePrice(){
+    
   
 }
+
 
 function updateChops(){
   document.getElementById('chops-count').innerText = chops.toString()
 }
 
-function purchasedSticks(){
-  document.getElementById('purchased-sticks').innerText = clickUpgrades.sticks.quantity.toString()
-}
+// function purchasedSticks(){
+  // if (clickUpgrades.sticks.quantity > 50){
+  //   clickUpgrades.sticks.price += 10 * 1.2
+  // }
+  // document.getElementById('purchased-sticks').innerText = clickUpgrades.sticks.quantity.toString()
+  // document.getElementById('stick-price').innerText = clickUpgrades.sticks.price.toString()
+// }
 
-document.getElementById('stick-price').innerText = clickUpgrades.sticks.price.toString()
+// function purchasedAxes(){
+  // if (clickUpgrades.axe.quantity > 50){
+  //   clickUpgrades.axe.price += 20 * 1.2
+  // }
+  // document.getElementById('purchased-axes').innerText = clickUpgrades.axe.quantity.toString()
+  // document.getElementById('axe-price').innerText = clickUpgrades.axe.price.toString()
+// }
 
-document.getElementById('travis-price').innerText = guestDrummers.TravisBarker.price.toString()
+// function purchasedTravis(){
+//   if (guestDrummers.TravisBarker.quantity > 25){
+//     guestDrummers.TravisBarker.price += 200 * 1.2
+//   }
+//   document.getElementById('purchased-travis').innerText = guestDrummers.TravisBarker.quantity.toString()
+//   document.getElementById('travis-price').innerText = guestDrummers.TravisBarker.price.toString()
 
-document.getElementById('axe-price').innerText = clickUpgrades.axe.price.toString()
+// }
 
-document.getElementById('neil-price').innerText = guestDrummers.NeilPeart.price.toString()
-
-function purchasedAxes(){
-  document.getElementById('purchased-axes').innerText = clickUpgrades.axe.quantity.toString()
-}
-
-function purchasedTravis(){
-  document.getElementById('purchased-travis').innerText = guestDrummers.TravisBarker.quantity.toString()
-}
-
-function purchasedNeil(){
-  document.getElementById('purchased-neil').innerText = guestDrummers.NeilPeart.quantity.toString()
-}
+// function purchasedNeil(){
+//   if (guestDrummers.NeilPeart.quantity > 25){
+//     guestDrummers.NeilPeart.price += 600 * 1.2
+//   }
+//   document.getElementById('purchased-neil').innerText = guestDrummers.NeilPeart.quantity.toString()
+//   document.getElementById('neil-price').innerText = guestDrummers.NeilPeart.price.toString()
+// }
 
 function buySticks(){
   if(chops >= clickUpgrades.sticks.price){
     chops -= clickUpgrades.sticks.price
     clickUpgrades.sticks.quantity++
+  } if (clickUpgrades.sticks.quantity > 50){
+    clickUpgrades.sticks.price += 10 * 1.1
   }
+  document.getElementById('purchased-sticks').innerText = clickUpgrades.sticks.quantity.toString()
+  document.getElementById('stick-price').innerText = clickUpgrades.sticks.price.toString()
+  
   updateChops()
-  purchasedSticks()
+  // purchasedSticks()
 }
+
+
+
+
+  // if(clickUpgrades.sticks.quantity >= 10){
+  //   clickUpgrades.sticks.price += clickUpgrades.sticks.price * 1.2
+  // }
+
 
 function buyAxe(){
   if(chops >= clickUpgrades.axe.price){
     chops -= clickUpgrades.axe.price
     clickUpgrades.axe.quantity++
+  } if (clickUpgrades.axe.quantity > 50){
+    clickUpgrades.axe.price += 20 * 1.1
   }
+  document.getElementById('purchased-axes').innerText = clickUpgrades.axe.quantity.toString()
+  document.getElementById('axe-price').innerText = clickUpgrades.axe.price.toString()
   updateChops()
-  purchasedAxes()
+  // purchasedAxes()
 }
 
 function buyTravis(){
   if(chops >= guestDrummers.TravisBarker.price){
     chops -= guestDrummers.TravisBarker.price
     guestDrummers.TravisBarker.quantity++
+  } if (guestDrummers.TravisBarker.quantity > 25){
+    guestDrummers.TravisBarker.price += 200 * 1.1
   }
+  document.getElementById('purchased-travis').innerText = guestDrummers.TravisBarker.quantity.toString()
+  document.getElementById('travis-price').innerText = guestDrummers.TravisBarker.price.toString()
   updateChops()
-  purchasedTravis()
+  // purchasedTravis()
   // collectAutoUpgrades()
 }
 
@@ -133,9 +155,13 @@ function buyNeil(){
   if(chops >= guestDrummers.NeilPeart.price){
     chops -= guestDrummers.NeilPeart.price
     guestDrummers.NeilPeart.quantity++
+  } if (guestDrummers.NeilPeart.quantity > 25){
+    guestDrummers.NeilPeart.price += 600 * 1.1
   }
+  document.getElementById('purchased-neil').innerText = guestDrummers.NeilPeart.quantity.toString()
+  document.getElementById('neil-price').innerText = guestDrummers.NeilPeart.price.toString()
   updateChops()
-  purchasedNeil()
+  // purchasedNeil()
   // collectAutoUpgrades()
 }
 
@@ -148,15 +174,8 @@ function collectAutoUpgrades(){
     updateChops()
   }
 
-function priceMultiplier(){
-  if (clickUpgrades.sticks.quantity >= 10) {
-    clickUpgrades.sticks.price *= 1.2
-  }
-}
 
 setInterval(collectAutoUpgrades, 3000);
-
-
 drawDrums()
 
 

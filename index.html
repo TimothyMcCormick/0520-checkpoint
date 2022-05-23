@@ -20,32 +20,37 @@
       </header>
       <main class="container-fluid">
         <div class="row justify-content-center" id="drums">
-          <!-- <div class="col-md-4 shadow drums-card" id="mine-chops" style="width: 30em">
-            <img class="img-fluid drums-img" src="./drumset.jpg" alt="">
+          <!-- <div class="col-md-4 shadow" id="mine-chops" style="width: 30em">
+            <img class="img-fluid drums-img border rounded " src="./drumset.jpg" alt="">
           </div> -->
         </div>
         <div class="row justify-content-between">
           <div class="col-md-6 text-start">
             <h1 class="text-light">Total Sticks: <span id="purchased-sticks">0</span></h1>
             <button class="btn-primary" onclick="buySticks()">Purchase Sticks</button>
-            <p class="text-light">Cost: <span id="stick-price">10</span></p>
+            <p class="text-light m-0">Cost: <span id="stick-price">10</span></p>
+            <p class="text-light m-0">Multiplier: x<span id="sticks-multiplier"></span></p>
           </div>
           <div class="col-md-6 text-end">
             <h1 class="text-light">Total Travis Barker: <span id="purchased-travis">0</span></h1>
             <button class="btn-primary" onclick="buyTravis()">Purchase Travis Barker</button>
-            <p class="text-light">Cost: <span id="travis-price">200</span></p>
+            <p class="text-light m-0">Cost: <span id="travis-price">200</span></p>
+            <p class="text-light m-0">Multiplier: x<span id="travis-multiplier"></span></p>
           </div>
         </div>
         <div class="row justify-content-between">
           <div class="col-md-6 text-start">
             <h1 class="text-light">Total Axes: <span id="purchased-axes">0</span></h1>
             <button class="btn-primary" onclick="buyAxe()">Purchase Axe</button>
-            <p class="text-light">Cost: <span id="axe-price">20</span></p>
+            <p class="text-light m-0">Cost: <span id="axe-price">20</span></p>
+            <p class="text-light m-0">Multiplier: x<span id="axe-multiplier"></span></p>
           </div>
           <div class="col-md-6 text-end">
             <h1 class="text-light">Total Neil Peart: <span id="purchased-neil">0</span></h1>
-            <button class="btn-primary" onclick="buyNeil()">Purchase Neil</button>
-            <p class="text-light">Cost: <span id="neil-price">600</span></p>
+            <button class="btn-primary" onclick="buyNeil()">Purchase Neil Peart</button>
+            <p class="text-light m-0">Cost: <span id="neil-price">600</span></p>
+            <p class="text-light m-0">Multiplier: x<span id="neil-multiplier"></span></p>
+
           </div>
         </div>
       </main>

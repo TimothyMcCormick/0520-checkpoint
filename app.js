@@ -40,13 +40,10 @@ let guestDrummers= {
   }
 };
 
-// let newSticksPrice = clickUpgrades.sticks.price
-
-
 function drawDrums(){
   let template = ''
   template +=`
-  <div class="col-md-4 shadow drums-card p-0 rounded"  style="width: 30em">
+  <div class="col-md-4 shadow p-0 rounded"  style="width: 30em">
     <img class="img-fluid drums-img rounded" onclick="mine()" src="${drums.image}" alt="">
   </div>
   `
@@ -58,6 +55,8 @@ function mine(){
   chops++
     if (clickUpgrades.sticks.quantity > 0){
       chops += clickUpgrades.sticks.quantity * clickUpgrades.sticks.multiplier    
+    } if (clickUpgrades.axe.quantity > 0){
+      chops += clickUpgrades.axe.quantity * clickUpgrades.axe.multiplier    
     }
     updateChops()
     
@@ -69,100 +68,61 @@ function updateChops(){
   document.getElementById('chops-count').innerText = chops.toString()
 }
 
-// function purchasedSticks(){
-  // if (clickUpgrades.sticks.quantity > 50){
-  //   clickUpgrades.sticks.price += 10 * 1.2
-  // }
-  // document.getElementById('purchased-sticks').innerText = clickUpgrades.sticks.quantity.toString()
-  // document.getElementById('stick-price').innerText = clickUpgrades.sticks.price.toString()
-// }
-
-// function purchasedAxes(){
-  // if (clickUpgrades.axe.quantity > 50){
-  //   clickUpgrades.axe.price += 20 * 1.2
-  // }
-  // document.getElementById('purchased-axes').innerText = clickUpgrades.axe.quantity.toString()
-  // document.getElementById('axe-price').innerText = clickUpgrades.axe.price.toString()
-// }
-
-// function purchasedTravis(){
-//   if (guestDrummers.TravisBarker.quantity > 25){
-//     guestDrummers.TravisBarker.price += 200 * 1.2
-//   }
-//   document.getElementById('purchased-travis').innerText = guestDrummers.TravisBarker.quantity.toString()
-//   document.getElementById('travis-price').innerText = guestDrummers.TravisBarker.price.toString()
-
-// }
-
-// function purchasedNeil(){
-//   if (guestDrummers.NeilPeart.quantity > 25){
-//     guestDrummers.NeilPeart.price += 600 * 1.2
-//   }
-//   document.getElementById('purchased-neil').innerText = guestDrummers.NeilPeart.quantity.toString()
-//   document.getElementById('neil-price').innerText = guestDrummers.NeilPeart.price.toString()
-// }
-
 function buySticks(){
   if(chops >= clickUpgrades.sticks.price){
     chops -= clickUpgrades.sticks.price
     clickUpgrades.sticks.quantity++
-  } if (clickUpgrades.sticks.quantity > 50){
+  } if (clickUpgrades.sticks.quantity > 1){
     clickUpgrades.sticks.price += 10 * 1.1
   }
+  let sticksModifierCount = clickUpgrades.sticks.quantity * clickUpgrades.sticks.multiplier
+  document.getElementById('sticks-multiplier').innerText = sticksModifierCount.toString()
   document.getElementById('purchased-sticks').innerText = clickUpgrades.sticks.quantity.toString()
   document.getElementById('stick-price').innerText = clickUpgrades.sticks.price.toString()
   
   updateChops()
-  // purchasedSticks()
 }
-
-
-
-
-  // if(clickUpgrades.sticks.quantity >= 10){
-  //   clickUpgrades.sticks.price += clickUpgrades.sticks.price * 1.2
-  // }
-
 
 function buyAxe(){
   if(chops >= clickUpgrades.axe.price){
     chops -= clickUpgrades.axe.price
     clickUpgrades.axe.quantity++
-  } if (clickUpgrades.axe.quantity > 50){
+  } if (clickUpgrades.axe.quantity > 1){
     clickUpgrades.axe.price += 20 * 1.1
   }
+  let axeModifierCount = clickUpgrades.axe.quantity * clickUpgrades.axe.multiplier
+  document.getElementById('axe-multiplier').innerText = axeModifierCount.toString()
   document.getElementById('purchased-axes').innerText = clickUpgrades.axe.quantity.toString()
   document.getElementById('axe-price').innerText = clickUpgrades.axe.price.toString()
   updateChops()
-  // purchasedAxes()
 }
 
 function buyTravis(){
   if(chops >= guestDrummers.TravisBarker.price){
     chops -= guestDrummers.TravisBarker.price
     guestDrummers.TravisBarker.quantity++
-  } if (guestDrummers.TravisBarker.quantity > 25){
+  } if (guestDrummers.TravisBarker.quantity > 1){
     guestDrummers.TravisBarker.price += 200 * 1.1
   }
+  let travisModifierCount = guestDrummers.TravisBarker.quantity * guestDrummers.TravisBarker.multiplier
+  document.getElementById('travis-multiplier').innerText = travisModifierCount.toString()
   document.getElementById('purchased-travis').innerText = guestDrummers.TravisBarker.quantity.toString()
   document.getElementById('travis-price').innerText = guestDrummers.TravisBarker.price.toString()
   updateChops()
-  // purchasedTravis()
-  // collectAutoUpgrades()
 }
 
 function buyNeil(){
   if(chops >= guestDrummers.NeilPeart.price){
     chops -= guestDrummers.NeilPeart.price
     guestDrummers.NeilPeart.quantity++
-  } if (guestDrummers.NeilPeart.quantity > 25){
+  } if (guestDrummers.NeilPeart.quantity > 1){
     guestDrummers.NeilPeart.price += 600 * 1.1
   }
+  let neilModifierCount = guestDrummers.NeilPeart.quantity * guestDrummers.NeilPeart.multiplier
+  document.getElementById('neil-multiplier').innerText = neilModifierCount.toString()
   document.getElementById('purchased-neil').innerText = guestDrummers.NeilPeart.quantity.toString()
   document.getElementById('neil-price').innerText = guestDrummers.NeilPeart.price.toString()
   updateChops()
-  // purchasedNeil()
-  // collectAutoUpgrades()
 }
 
 function collectAutoUpgrades(){
@@ -173,6 +133,11 @@ function collectAutoUpgrades(){
       }
     updateChops()
   }
+
+// function multiplierCount(){
+//   clickUpgrades.sticks.multiplier += clickUpgrades.sticks.quantity * 
+  
+// }
 
 
 setInterval(collectAutoUpgrades, 3000);

@@ -72,7 +72,7 @@ function buySticks(){
   if(chops >= clickUpgrades.sticks.price){
     chops -= clickUpgrades.sticks.price
     clickUpgrades.sticks.quantity++
-  } if (clickUpgrades.sticks.quantity > 1){
+  } if (clickUpgrades.sticks.quantity > 0){
     clickUpgrades.sticks.price += 10 * 1.1
   }
   let sticksModifierCount = clickUpgrades.sticks.quantity * clickUpgrades.sticks.multiplier
@@ -87,7 +87,7 @@ function buyAxe(){
   if(chops >= clickUpgrades.axe.price){
     chops -= clickUpgrades.axe.price
     clickUpgrades.axe.quantity++
-  } if (clickUpgrades.axe.quantity > 1){
+  } if (clickUpgrades.axe.quantity > 0){
     clickUpgrades.axe.price += 20 * 1.1
   }
   let axeModifierCount = clickUpgrades.axe.quantity * clickUpgrades.axe.multiplier
@@ -101,7 +101,7 @@ function buyTravis(){
   if(chops >= guestDrummers.TravisBarker.price){
     chops -= guestDrummers.TravisBarker.price
     guestDrummers.TravisBarker.quantity++
-  } if (guestDrummers.TravisBarker.quantity > 1){
+  } if (guestDrummers.TravisBarker.quantity > 0){
     guestDrummers.TravisBarker.price += 200 * 1.1
   }
   let travisModifierCount = guestDrummers.TravisBarker.quantity * guestDrummers.TravisBarker.multiplier
@@ -115,7 +115,7 @@ function buyNeil(){
   if(chops >= guestDrummers.NeilPeart.price){
     chops -= guestDrummers.NeilPeart.price
     guestDrummers.NeilPeart.quantity++
-  } if (guestDrummers.NeilPeart.quantity > 1){
+  } if (guestDrummers.NeilPeart.quantity > 0){
     guestDrummers.NeilPeart.price += 600 * 1.1
   }
   let neilModifierCount = guestDrummers.NeilPeart.quantity * guestDrummers.NeilPeart.multiplier
